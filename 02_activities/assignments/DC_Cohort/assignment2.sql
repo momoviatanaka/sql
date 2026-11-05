@@ -155,7 +155,7 @@ with a UNION binding them. */
 CREATE TEMP TABLE sales_by_day AS
 SELECT 
     market_date,
-    SUM(CAST(cp.cost_per_quantity * cp.quantity AS INTEGER)) AS total_by_day	
+    SUM(CAST(cp.cost_per_quantity * cp.quantity AS FLOAT)) AS total_by_day	
 FROM customer_purchases AS cp
 GROUP BY market_date; 
 
