@@ -157,7 +157,7 @@ SELECT
     market_date,
     SUM(CAST(cp.cost_per_quantity * cp.quantity AS INTEGER)) AS total_by_day	
 FROM customer_purchases AS cp
-GROUP BY market_date
+GROUP BY market_date; 
 
 SELECT *
 FROM (
