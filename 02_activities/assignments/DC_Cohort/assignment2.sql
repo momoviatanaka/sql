@@ -48,7 +48,7 @@ SELECT * FROM
 	SELECT 
 		cp.customer_id, 
 		cp.market_date, 
-		ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY market_date ASC) AS visit_number  
+		DENSE_RANK() OVER (PARTITION BY customer_id ORDER BY market_date ASC) AS visit_number  
 	FROM customer_purchases AS cp 
 ) x
 WHERE x.market_date < '2022-04-29'
