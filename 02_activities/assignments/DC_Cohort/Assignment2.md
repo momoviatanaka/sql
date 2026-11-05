@@ -57,7 +57,14 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1: Overwrite 
+
+One way would be for CUSTOMER_ADDRESS to have one row per customer, where each customer_id is a primary key. Whenever an address needs to be changed or added, it overwrites the previous data. 
+
+Type 2: Retain changes 
+
+Another way would be for CUSTOMDER_ADDRESS to allow customer_id to be associated with multiple rows with different addresses. We could have a column like “current_flag” that is true if the address is the current active address, and/or we could have start_date and end_date indicate when an address was added to the table and when it was superceded by a new address. 
+
 ```
 
 ***
@@ -192,5 +199,9 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+Boykis's article argues that machine learning is far less automated than it appears. It was written before the major proliferation of LLMs, but there are ethical considerations that this article raises that seem magnified by mass uptake of LLMs. 
+
+The story reveals a lot about the ethics of labour. ImageNet's 14 million images were labelled by tens of thousands of anonymous Mechanical Turk workers clicking buttons for cents. Like the garment workers Boykis compares them to, this work is essential but invisible and poorly paid. The same pattern continues with LLMs, which rely on hidden workers for data labelling and content moderation, often in low-paid and psychologically difficult conditions, even though the technology is marketed as "artificial" intelligence. I think that most users of LLMs don’t think about how the model “knows” the things it is saying, and when someone brags about having coded an app or made a mockup of their interior design idea “all by themselves,” they aren’t thinking about how the LLM that helped them was only able to do so relying on human labour and intellectual labour that was scraped from the internet without attribution, or taken from underpaid anonymous workers. 
+
+The story also talks about the ethics of bias. If every layer of a dataset, from the WordNet taxonomy down to each individual label, reflects human choices, then it also carries its makers' assumptions. ImageNet Roulette exposed this by tagging people with offensive or absurd labels, and the ImageNet team later found that 1,593 of 2,832 categories in its "person" subtree were offensive. When such labels are built into systems used by police and companies, the harm to real people is hard to trace because the original decisions are buried under decades of layers, from 1960s text corpora to 2007 crowdwork to 2019 models. It also seems to ossify these biases and make it harder to “overwrite” as social norms develop. 
 ```
