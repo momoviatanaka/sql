@@ -233,7 +233,7 @@ It should use all of the columns from the product table, as well as a new column
 Name the timestamp column `snapshot_timestamp`. */
 --QUERY 9
 
-CREATE TEMP TABLE product_units AS
+CREATE TABLE product_units AS
 SELECT 
 *, 
 CURRENT_TIMESTAMP AS snapshot_timestamp 
