@@ -292,7 +292,7 @@ When you have all of these components, you can run the update statement. */
 --QUERY 12
 
 ALTER TABLE product_units
-ADD current_quantity INT
+ADD current_quantity INT; 
 
 UPDATE product_units
 -- COALESCE returns zero if quantity not found in vi 
@@ -302,7 +302,7 @@ SET current_quantity = COALESCE((
     WHERE vi.product_id = product_units.product_id -- matches each inventory record to the row in product_units
     ORDER BY vi.market_date DESC
     LIMIT 1
-), 0)
+), 0); 
 
 
 --END QUERY
