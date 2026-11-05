@@ -206,21 +206,21 @@ FROM vendor_inventory AS vi
 JOIN vendor AS v
     ON vi.vendor_id = v.vendor_id
 JOIN product AS p
-    ON vi.product_id = p.product_id
+    ON vi.product_id = p.product_id; 
 
 -- a table of all the combos of vendor, product, and customer 
 CREATE TEMP TABLE all_combinations AS
 SELECT *
 FROM vendor_products
-CROSS JOIN customer
+CROSS JOIN customer; 
 
 -- Calculating total_earned
 SELECT
     vendor_name,
     product_name,
-    SUM(price * 5) AS total_revenue
+    SUM(original_price * 5) AS total_revenue
 FROM all_combinations
-GROUP BY vendor_name, product_name
+GROUP BY vendor_name, product_name; 
 
 
 --END QUERY
