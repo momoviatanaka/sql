@@ -57,7 +57,14 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1: Overwrite 
+
+One way would be for CUSTOMER_ADDRESS to have one row per customer, where each customer_id is a primary key. Whenever an address needs to be changed or added, it overwrites the previous data. 
+
+Type 2: Retain changes 
+
+Another way would be for CUSTOMDER_ADDRESS to allow customer_id to be associated with multiple rows with different addresses. We could have a column like “current_flag” that is true if the address is the current active address, and/or we could have start_date and end_date indicate when an address was added to the table and when it was superceded by a new address. 
+
 ```
 
 ***
